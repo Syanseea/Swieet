@@ -1,0 +1,42 @@
+<div class="row mb-4">
+  <% posts.each do |post| %>
+    <div class="container mt-4 border-bottom border-dark">
+      <div class="row">
+        <% #プロフィール画像 %>
+        <div class="col-md-2">
+          <%= image_tag post.user.get_profile_image(100,100) %>
+        </div>
+        <div class="col-md-10">
+
+          ユーザー名：<%= post.user.name %>
+
+          <%= link_to (post_path(post.id)) do %>
+            作成日時:<%= l post.created_at %><br>
+            タイトル：<%= post.title %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to (post_path(post.id)) do %>
+      <div class="row mt-2 mb-2">
+        <div class="col-md-10 offset-md-2">
+          コンテンツ：<%= post.content %>
+        </div>
+      </div>
+      <% end %>
+      <div class="row bg-light">
+        <div class="col-md-2 offset-md-2">
+        いいね
+        </div>
+        
+        <% #コメント数 %>
+        <div class="col-md-2">
+          <%= link_to(post_path(post.id)) do %>
+          <i class="fa-solid fa-comment"></i> <%= post.post_comments.count %>
+          <% end %>
+        </div>
+        
+      </div>
+    </div>
+  <% end %>
+</div>

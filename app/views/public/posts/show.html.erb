@@ -1,0 +1,141 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <% #サイドバー %>
+    <div class="col-md-3 mt-4">
+       <% #投稿フォーム%>
+
+      <%= render 'public/posts/form', post: @post1 %>
+    </div>
+    <% #投稿詳細 %>
+    <div class="col-md-8 offset-md-1">
+
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="mt-4 rounded-lg border border-dark text-center">Swieet Detail</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="container mt-4 border-bottom border-dark">
+
+          <div class="row">
+            <% #プロフィール画像 %>
+            <div class="col-md-2">
+              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <% if current_user == @post.user %>
+                <%= link_to(mypage_path) do %>
+                <%= image_tag @post.user.get_profile_image(100,100) %>
+                <% end %>
+              <% else %>
+                <%= link_to(user_path(@post.user.id)) do %>
+                <%= image_tag @post.user.get_profile_image(100,100) %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-10">
+              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <% if current_user == @post.user %>
+                <%= link_to(mypage_path) do %>
+                  ユーザー名：<%= @post.user.name %>
+                <% end %>
+              <% else %>
+                <%= link_to(user_path(@post.user.id)) do %>
+                  ユーザー名：<%= @post.user.name %>
+                <% end %>
+              <% end %>
+
+              <br>作成日時:<%= l @post.created_at %><br>
+                  タイトル：<%= @post.title %>
+            </div>
+          </div>
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-10 offset-md-2">
+              コンテンツ：<%= @post.content %>
+            </div>
+          </div>
+
+          <div class="row bg-light">
+            <div class="col-md-2 offset-md-2">
+            いいね
+            </div>
+
+            <% #コメント数 %>
+            <div class="col-md-2">
+              <i class="fa-solid fa-comment"></i> <%= @post.post_comments.count %>
+            </div>
+
+
+            <% if current_user == @post.user %>
+            <div class="col-md-2 offset-md-2">
+              <%= link_to(edit_post_path(@post.id)) do %>
+               <button type="button" class="btn-sm btn-success">編集する</button>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to(post_path(@post.id),method: :delete, data: { confirm: '本当に消しますか？' }) do %>
+               <button type="button" class="btn-sm btn-danger">削除する</button>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% #コメント機能 %>
+      <div class="row">
+        <% @post.post_comments.each do |post_comment| %>
+        <div class="container mt-4 border-bottom border-dark">
+          <div class="row">
+          
+            <% #プロフィール画像 %>
+            <div class="col-md-2">
+              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              
+              <%= image_tag post_comment.user.get_profile_image(100,100) %>
+            </div>
+            <% #comment content %>
+            <div class="col-md-10">
+              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              ユーザー名：<%= post_comment.user.name %><br>
+              送信先　　：<%= post_comment.post.user.name %><br>
+              作成日時　：<%= l post_comment.created_at %><br>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-2">
+              コメント　：<%= post_comment.content %>
+            </div>
+          </div>
+          <div class="row bg-light">
+              <div class="col-md-2 offset-md-2">
+              いいね
+              </div>
+              <% if post_comment.user == current_user %>
+              <div class="col-md-2 offset-md-4">
+                削除
+              </div>
+              <% end %>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="container mt-2">
+          <%= form_with model: [@post, @post_comment] do |f| %>
+          <div class="row">
+          <div class="col-md-10 form-group">
+            <%= f.text_area :content, class: 'form-control post_comment', placeholder: "コメントをする" %>
+          </div>
+          <div class="col-md-2">
+            <%= f.submit "送信する" %>
+          </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

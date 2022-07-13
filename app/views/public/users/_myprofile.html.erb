@@ -1,0 +1,53 @@
+<% #myprofofile%>
+<div class="row">
+  <div class="col-md-4">
+    <h2 class="mt-4 rounded-lg border border-dark text-center">Mypage</h2>
+  </div>
+</div>
+<div class="row">
+
+  <div class="container border-bottom border-dark">
+    <div class="row">
+
+      <div class="col-md-4">
+        <%= image_tag user.get_profile_image(200,200) %>
+      </div>
+      <div class="col-md-8">
+        <b>Nick Name</b>
+        <br><%= user.name %>
+        <br><b>Introduction</b>
+        <br><%= user.introduction %>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+      follower0人 following0人
+      </div>
+      <div class="col-md-4 offset-md-4">
+        <%= link_to(edit_user_path(user.id)) do %>
+        <button type="button" class="btn btn-secondary btn-block">profile edit<i class="fa-solid fa-gear"></i></button>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mt-1 mb-2 ">
+      <div class="col">
+        <div class="btn-group d-flex">
+          <% if current_page?(mypage_path) %>
+            <a href="/mypage/show" class="btn btn-info active flex-fill">Swieet</a>
+            <a href="/mypage/favo" class="btn btn-info flex-fill">いいね</a>
+            <a href="/mypage/menus" class="btn btn-info flex-fill">Menu</a>
+          <% elsif current_page?(mypagefavo_path) %>
+            <a href="/mypage/show" class="btn btn-info flex-fill">Swieet</a>
+            <a href="/mypage/favo" class="btn btn-info active flex-fill">いいね</a>
+            <a href="/mypage/menus" class="btn btn-info flex-fill">Menu</a>
+          <% else %>
+            <a href="/mypage/show" class="btn btn-info  flex-fill">Swieet</a>
+            <a href="/mypage/favo" class="btn btn-info flex-fill">いいね</a>
+            <a href="/mypage/menus" class="btn btn-info active flex-fill">Menu</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

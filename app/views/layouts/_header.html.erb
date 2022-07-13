@@ -1,0 +1,31 @@
+<header class="p-3 bg-dark text-dark border-bottom border-dark">
+  <% if user_signed_in? %>
+        <%= link_to(destroy_user_session_path,method: :delete) do %>
+        <button type="button" class="btn btn-info me-2">ログアウト</button>
+        <% end %>
+        <%= link_to(posts_path) do %>
+         <button type="button" class="btn btn-light">top</button>
+        <% end %>
+        <%= link_to(mypage_path) do %>
+         <button type="button" class="btn btn-light">mypage</button>
+        <% end %>
+    <% elsif admin_signed_in? %>
+        <%= link_to(destroy_admin_session_path,method: :delete) do %>
+        <button type="button" class="btn btn-info me-2">ログアウト</button>
+        <% end %>
+    <% else %>
+        <%= link_to(new_user_session_path) do %>
+        <button type="button" class="btn btn-info">ログイン</button>
+        <% end %>
+        <%= link_to(new_user_registration_path) do %>
+        <button type="button" class="btn btn-warning">新規登録</button>
+        <% end %>
+        <%= link_to(root_path) do %>
+        <button type="button" class="btn btn-light">top</button>
+        <% end %>
+        <%= link_to(about_path) do %>
+        <button type="button" class="btn btn-light">about</button>
+        <% end %>
+    <% end %>
+
+</header>

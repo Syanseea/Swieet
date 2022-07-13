@@ -1,0 +1,45 @@
+<% #otersprofile %>
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="mt-4 rounded-lg border border-dark text-center"><%= user.name %>さんのProfile</h2>
+  </div>
+</div>
+<div class="row">
+
+  <div class="container border-bottom border-dark">
+    <div class="row">
+
+      <div class="col-md-4">
+        <%= image_tag user.get_profile_image(200,200) %>
+      </div>
+      <div class="col-md-8">
+        <b>Nick Name</b>
+        <br><%= user.name %>
+        <br><b>Introduction</b>
+        <br><%= user.introduction %>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+      follower0人 following0人
+      </div>
+      <div class="col-md-4 offset-md-4">
+        フォローする
+      </div>
+    </div>
+    <div class="row mt-1 mb-2 ">
+      <div class="col">
+        <div class="btn-group d-flex">
+          <% if current_page?(user_path(user.id)) %>
+            <a href="/users/<%= user.id %>" class="btn btn-info active flex-fill">Swieet</a>
+            <a href="/users/<%= user.id %>/menus" class="btn btn-info flex-fill">Menu</a>
+          <% else %>
+            <a href="/users/<%= user.id %>" class="btn btn-info  flex-fill">Swieet</a>
+            <a href="/users/<%= user.id %>/menus" class="btn btn-info active flex-fill">Menu</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
