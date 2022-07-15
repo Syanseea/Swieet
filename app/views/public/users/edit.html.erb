@@ -13,22 +13,27 @@
         </div>
       </div>
 
-       <div class="row">
-          <div class="col rounded-lg border border-dark">
-            <%= form_with model:@user, local:true do |f| %>
-              <div class="form-group mt-3">
-                <b><%= f.label :"Nick Name" %></b>
-                <%= f.text_field :name, class: "form-control name" %>
-              </div>
-              <div class="form-group">
-                <b><%= f.label :"Profile Image"%></b>
-                <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-              </div>
-              <div class="form-group">
-                <b><%= f.label :"Introduction" %></b>
-                <%= f.text_area :introduction, class: "form-control introduction" %>
-              </div>
-              <div class="form-group">
-                <%= f.submit class: 'btn btn-secondary' %>
-              </div>
-            <% end %>
+      <div class="row mb-2">
+        <div class="col rounded-lg border border-dark">
+          <%= form_with model:@user, local:true do |f| %>
+            <div class="form-group mt-3">
+              <b><%= f.label :"Nick Name" %></b>
+              <%= f.text_field :name, class: "form-control name" %>
+            </div>
+            <div class="form-group">
+              <b><%= f.label :"Profile Image"%></b>
+              <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+            </div>
+            <div class="form-group">
+              <b><%= f.label :"Introduction" %></b>
+              <%= f.text_area :introduction, class: "form-control introduction" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

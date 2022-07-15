@@ -1,0 +1,113 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <% #サイドバー %>
+    <div class="col-md-3 mt-4">
+       <% #投稿フォーム%>
+      <%= render 'public/posts/form', post: @post1 %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="row">
+        <div class="col-md-9">
+          <h2 class="mt-4 rounded-lg border border-dark text-center"><%= @user.name %>さん</h2>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class= "tabs">
+          <input id="follower" type="radio" name="tab_item" checked >
+          <label class="tab_item" for="follower">Followers</label>
+          <input id="following" type="radio" name="tab_item">
+          <label class="tab_item" for="following">Followings</label>
+          <div class="tab_content" id="follower_content">
+            <div class="rab_content_description">
+              <% if @followers.count == 0 %>
+              フォロワーは存在しません
+              <% end %>
+              <% @followers.each do |user| %>
+                <div class="container border-bottom border-dark">
+                  <div class="row mb-2 mt-2">
+                    <div class="col-md-2">
+                    <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-6 offset-md-1">
+                      <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-3">
+                      <div>
+                      <%= render "public/relationships/relationshipbtn", user: user %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="tab_content" id="following_content">
+            <div class="rab_content_description">
+              <% if @followings.count == 0 %>
+            　フォローしているユーザーは存在しません
+              <% end %>
+              <% @followings.each do |user| %>
+                <div class="container border-bottom border-dark">
+                  <div class="row mb-2 mt-2">
+                    <div class="col-md-2">
+                    <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-6 offset-md-1">
+                      <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-3">
+                      <div>
+                      <%= render "public/relationships/relationshipbtn", user: user %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

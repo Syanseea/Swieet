@@ -1,14 +1,32 @@
-<div class="row mb-4">
+<div class="row">
   <% posts.each do |post| %>
     <div class="container mt-4 border-bottom border-dark">
+
       <div class="row">
         <% #プロフィール画像 %>
         <div class="col-md-2">
-          <%= image_tag post.user.get_profile_image(100,100) %>
+          <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+          <% if current_user == post.user %>
+            <%= link_to(mypage_path) do %>
+            <%= image_tag post.user.get_profile_image(100,100) %>
+            <% end %>
+          <% else %>
+            <%= link_to(user_path(post.user.id)) do %>
+            <%= image_tag post.user.get_profile_image(100,100) %>
+            <% end %>
+          <% end %>
         </div>
         <div class="col-md-10">
 
-          ユーザー名：<%= post.user.name %><br>
+          <% if current_user == post.user %>
+            <%= link_to(mypage_path) do %>
+              ユーザー名：<%= post.user.name %>
+            <% end %>
+          <% else %>
+            <%= link_to(user_path(post.user.id)) do %>
+              ユーザー名：<%= post.user.name %>
+            <% end %>
+          <% end %><br>
 
           <%= link_to (post_path(post.id)) do %>
             作成日時:<%= l post.created_at %><br>
@@ -24,20 +42,22 @@
         </div>
       </div>
       <% end %>
+
       <div class="row bg-light">
         <div class="col-md-2 offset-md-2">
         <% #いいね機能 %>
-            <%= render 'public/posts/favorite', post: post %>
+          <%= render 'public/posts/favorite', post: post %>
         </div>
-        
+
         <% #コメント数 %>
         <div class="col-md-2">
           <%= link_to(post_path(post.id)) do %>
           <i class="fa-solid fa-comment"></i> <%= post.post_comments.count %>
           <% end %>
         </div>
-        
+
       </div>
+
     </div>
   <% end %>
 </div>

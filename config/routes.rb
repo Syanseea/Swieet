@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'searches/search'
+  end
+  namespace :public do
     get 'menus/new'
     get 'menus/edit'
     get 'menus/show'
@@ -28,11 +31,18 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get "/about" => "homes#about", as: 'about'
+    get 'search' => "searches#search"
     resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
-      resource :post_comments, only: [:create, :destroy]
-    end 
+      resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+
+    resources :users, only: [:show,:edit,:update] do
+      resource :relationships, only: [:create, :destroy]
+    	get 'followings' => 'relationships#followings', as: 'followings'
+    	get 'followers' => 'relationships#followers', as: 'followers'
+    end
     
-    resources :users, only: [:show,:edit,:update]
     resources :menus, only: [:edit,:new,:show,:create,:destroy,:update]
     get 'users/:id/menus' => "users#menus", as: 'usermenus'
     get 'mypage/show' => "users#mypage", as: 'mypage'

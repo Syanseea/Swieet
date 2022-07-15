@@ -7,8 +7,10 @@
     </div>
    
     <div class="col-md-8 offset-md-1">
-      
+      <% #myprofofile %>
       <%= render 'public/users/myprofile', user: @user %>
+      <% #myfavo %>
+      <%= render 'public/users/favo', posts: @favorite_posts %>
     </div>
   </div>
 </div>

@@ -22,10 +22,11 @@
 
     <div class="row mt-5">
       <div class="col-md-4">
-      follower0人 following0人
+       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %> 
+       <%= link_to(user_followings_path(user.id)) do %>following<%= user.followings.count %>人<% end %>
       </div>
       <div class="col-md-4 offset-md-4">
-        フォローする
+        <%= render 'public/relationships/relationshipbtn', user: user %>
       </div>
     </div>
     <div class="row mt-1 mb-2 ">

@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids])
   end
 
   def show

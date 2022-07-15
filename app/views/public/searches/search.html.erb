@@ -1,0 +1,77 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <% #サイドバー %>
+    <div class="col-md-3 mt-4">
+       <% #投稿フォーム%>
+      <%= render 'public/posts/form', post: @post1 %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="mt-4 rounded-lg border border-dark text-center">"<%= params[:word] %>"の検索結果</h2>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class= "tabs">
+          <input id="search_users" type="radio" name="tab_item" checked >
+          <label class="tab_item" for="search_users">Users</label>
+          <input id="search_posts" type="radio" name="tab_item">
+          <label class="tab_item" for="search_posts">Swieets</label>
+          <div class="tab_content" id="search_users_index">
+            <div class="rab_content_description">
+              <% if @users.count == 0 %>
+              　検索したユーザーは存在しません
+              <% end %>
+              <% @users.each do |user| %>
+                <div class="container border-bottom border-dark">
+                  <div class="row mb-2 mt-2">
+                    <div class="col-md-2">
+                    <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                        <%= image_tag user.get_profile_image(80,80) %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-6 offset-md-1">
+                      <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <% if current_user == user %>
+                        <%= link_to(mypage_path) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to(user_path(user.id)) do %>
+                          <b>Name:</b><%= user.name %><br>
+                          <b>Introduction:</b><%= user.introduction %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-3">
+                      <div>
+                      <%= render "public/relationships/relationshipbtn", user: user %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="tab_content" id="search_posts_index">
+            <div class="rab_content_description">
+              <% if @posts.count == 0 %>
+              検索したSwieetは存在しません
+              <% end %>
+              <%= render "public/posts/post_index", posts: @posts %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

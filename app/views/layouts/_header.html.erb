@@ -1,14 +1,20 @@
 <header class="p-3 bg-dark text-dark border-bottom border-dark">
+  <div class="row">
   <% if user_signed_in? %>
         <%= link_to(destroy_user_session_path,method: :delete) do %>
-        <button type="button" class="btn btn-info me-2">ログアウト</button>
+          <button type="button" class="btn btn-info me-2">ログアウト</button>
         <% end %>
         <%= link_to(posts_path) do %>
-         <button type="button" class="btn btn-light">top</button>
+          <button type="button" class="btn btn-light">top</button>
         <% end %>
         <%= link_to(mypage_path) do %>
-         <button type="button" class="btn btn-light">mypage</button>
+          <button type="button" class="btn btn-light">mypage</button>
         <% end %>
+        <%= link_to(new_menu_path) do %>
+          <button type="button" class="btn btn-light">Menu作成</button>
+        <% end %>
+        <%= render 'layouts/searchform' %>
+       
     <% elsif admin_signed_in? %>
         <%= link_to(destroy_admin_session_path,method: :delete) do %>
         <button type="button" class="btn btn-info me-2">ログアウト</button>
@@ -27,5 +33,5 @@
         <button type="button" class="btn btn-light">about</button>
         <% end %>
     <% end %>
-
+  </div>
 </header>

@@ -4,11 +4,28 @@
       <div class="row">
         <% #プロフィール画像 %>
         <div class="col-md-2">
-          <%= image_tag post.user.get_profile_image(100,100) %>
+          <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+            <% if current_user == post.user %>
+              <%= link_to(mypage_path) do %>
+              <%= image_tag post.user.get_profile_image(100,100) %>
+              <% end %>
+            <% else %>
+              <%= link_to(user_path(post.user.id)) do %>
+              <%= image_tag post.user.get_profile_image(100,100) %>
+              <% end %>
+            <% end %>
         </div>
         <div class="col-md-10">
 
-          ユーザー名：<%= post.user.name %><br>
+          <% if current_user == post.user %>
+            <%= link_to(mypage_path) do %>
+              ユーザー名：<%= post.user.name %>
+            <% end %>
+          <% else %>
+            <%= link_to(user_path(post.user.id)) do %>
+              ユーザー名：<%= post.user.name %>
+            <% end %>
+          <% end %><br>
 
           <%= link_to (post_path(post.id)) do %>
             作成日時:<%= l post.created_at %><br>
