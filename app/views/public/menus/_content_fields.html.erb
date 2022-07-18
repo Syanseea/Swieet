@@ -1,0 +1,12 @@
+<div class="nested-fields">
+
+    <%= f.number_field :meter %>m
+    <%= f.number_field :repeat %>本
+    <%= f.number_field :set %>set
+    <%= f.number_field :second %>秒
+    <%= f.text_field :detail,placeholder:"例)Fr/Ba/Ch" %>
+    <%= link_to_remove_association f do %>
+    <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+
+</div>

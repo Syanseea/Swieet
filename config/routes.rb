@@ -42,12 +42,21 @@ Rails.application.routes.draw do
     	get 'followings' => 'relationships#followings', as: 'followings'
     	get 'followers' => 'relationships#followers', as: 'followers'
     end
-    
+
     resources :menus, only: [:edit,:new,:show,:create,:destroy,:update]
     get 'users/:id/menus' => "users#menus", as: 'usermenus'
     get 'mypage/show' => "users#mypage", as: 'mypage'
     get 'mypage/favo' => "users#mypagefavo", as: 'mypagefavo'
     get 'mypage/menus' => "users#mypagemenus", as: 'mypagemenus'
+  end
+
+  namespace :admin do
+    devise_scope :admin do
+    root "sessions#new"
+    end
+    get "top" => "homes#top"
+    resources :users, only: [:index, :destroy]
+    resources :posts, only: [:index, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

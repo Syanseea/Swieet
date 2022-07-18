@@ -13,10 +13,23 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-
-require("jquery")
+import "../menus/print"
+// require("jquery")
 require("@nathanvda/cocoon")
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// copy-btn
+$(document).ready(function(){
+   $(".copy-btn").click(function() {
+  var url = $(location).attr('href');
+  navigator.clipboard.writeText(url);
+
+  //alert("コピーできました！");
+  $("#copy-element").append('<p>コピーが完了しました</p>')
+})
+})
+

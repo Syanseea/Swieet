@@ -1,12 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'public_homes/top.scss';
+@import 'header.scss';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300&display=swap');
 
+.session-back {
+  background-image: url(/assets/sessionback.jpg);
+  height: 670px;
+  background-size: cover;
+  overflow: hidden;
+}
 .form-signin {
     max-width: 420px;
     padding: 30px 38px 50px;
     margin: 0 auto;
-    margin-bottom: 15%;
-    background-color: #eee;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    background-color: rgba(242, 242, 242,0.5);
     border: 3px dotted rgba(0,0,0,0.1);
 }
 
@@ -34,8 +44,9 @@
     max-width: 620px;
     padding: 30px 38px 50px;
     margin: 0 auto;
+    margin-top: 5%;
     margin-bottom: 5%;
-    background-color: #eee;
+    background-color: rgba(242, 242, 242,0.5);
     border: 3px dotted rgba(0,0,0,0.1);
 }
 
@@ -104,4 +115,16 @@ input[name="tab_item"] {
 #search_users:checked ~ #search_users_index,
 #search_posts:checked ~ #search_posts_index{
   display: block;
+}
+
+.alert {
+    color:#262626;
+    background:#FFEBE8;
+    text-align: center;
+    border:2px solid #990000;
+    padding:12px; font-weight:850;
+  }
+
+.footer {
+  background-color: rgb(242, 242, 242);
 }

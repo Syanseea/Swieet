@@ -38,7 +38,7 @@
       <%= link_to (post_path(post.id)) do %>
       <div class="row mt-2 mb-2">
         <div class="col-md-10 offset-md-2">
-          コンテンツ：<%= post.content %>
+          コンテンツ：<%= Rinku.auto_link(post.content, :all, 'target="_blank"').html_safe %>
         </div>
       </div>
       <% end %>

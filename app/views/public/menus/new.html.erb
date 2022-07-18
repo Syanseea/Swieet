@@ -14,29 +14,8 @@
         </div>
       </div>
       <% #menu作成フォーム %>
-      <div class="row border border-dark rounded-lg">
-        <div class="container">
-          <%= form_with model: @menu, local: true do |f| %>
 
-            <% #menuのフォーム部分 %>
-            <div class="row mt-2 mx-1 border-bottom border-dark">
-              <div class="col-md-4 offset-md-1 form-inline">
-                <h5>日付：<%= f.date_field :dating, class: 'form-control' %></h5>
-              </div>
-              <div class="col-md-7 form-inline">
-                <h5>タイトル：<%= f.text_field :title, class: 'form-control', placeholder:'例)体力強化メニュー' %></h5>
-              </div>
-            </div>
-
-            <% #themeのフォーム部分 %>
-            <div class="row">
-
-            </div>
-
-          <% end %>
-        </div>
-
-      </div>
+      <%= render 'public/menus/menuform', menu: @menu %>
 
     </div>
 

@@ -1,0 +1,22 @@
+<div class="nested-fields" style="width: 620px;">
+  <table class="table table-borderless">
+    <td style="width: 179px">
+    <%= f.select :style, {"W-up":"W-up","HR-up":"HR-up","Kick":"Kick","Drill":"Drill","Pull":"Pull","Swim":"Swim","Easy":"Easy","Down":"Down"}, { include_blank: "選択してください" }, { required: true } %>
+    <%= link_to_remove_association f do %>
+    <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+    </td>
+
+    <td>
+    <%= f.fields_for :contents do |content| %>
+      <%= render 'public/menus/content_fields', f: content %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association  f, :contents do %>
+      <i class="fa-solid fa-circle-plus"></i>コンテンツを追加
+      <% end %>
+    </div>
+    </td>
+  </table>
+</div>

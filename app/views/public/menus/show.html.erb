@@ -1,2 +1,98 @@
-<h1>Public::Menus#show</h1>
-<p>Find me in app/views/public/menus/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <h2 class="mt-4 rounded-lg border border-dark text-center">Menu詳細</h2>
+    </div>
+    <div class="col-md-2">
+      <h2 class="mt-4  rounded-lg border border-dark text-center">
+        <% if @menu.is_active == true %>
+          <a class="text-success">公開中</a>
+        <% else %>
+          <a class="text-muted">非公開中</a>
+        <% end %>
+      </h2>
+    </div>
+    <div class="col-md-2 offset-md-6">
+      <%= link_to(edit_menu_path(@menu)) do %>
+        <button type="button" class="btn btn-secondary mt-4" style="width: 120px;">edit<i class="fa-solid fa-gear"></i></button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="print-area">
+    <div class="row mb-4 rounded-lg border border-dark">
+      <div class="container">
+
+        <% #menu詳細上の部分 %>
+      　<div class="row mx-1 border-bottom border-dark">
+      　   <div class="col-md-3 mb-2 d-flex align-items-end">
+            <u><h4>日付：<%= @menu.dating %></h4></u>
+          </div>
+          <div class="col-md-4">
+            <u><h4>タイトル：<%= @menu.title %></h4></u>
+          </div>
+          <div class="col-md-3 offset-md-1">
+            <u><h4>作成者：<%= @menu.user.name %></h4></u>
+          </div>
+        </div>
+
+
+        <div class="row mx-1">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 15%">Practice</th>
+                <th scope="col" style="width: 10%">Distance(m)</th>
+                <th scope="col" style="width: 10%">Times</th>
+                <th scope="col" style="width: 10%">Set</th>
+                <th scope="col" style="width: 10%">Cycle(秒)</th>
+                <th>Description</th>
+                <th scope="col" style="width: 10%">Time</th>
+                <th scope="col" style="width: 10%">Total　Distance(m)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @sum = 0 %>
+              <% @menu.themes.each do |theme| %>
+                <% theme.contents.each do |content| %>
+                <tr>
+                  <td><%= theme.style %></td>
+                  <td><%= content.meter %>m️</td>
+                  <td><%= content.repeat %>回</td>
+                  <td><%= content.set %>set</td>
+                  <td><%= content.second %>秒</td>
+                  <td><%= content.detail %></td>
+                  <td><%= content.sum_seconds %>秒</td>
+                  <td><%= content.sum_meters %>m</td>
+                  <% @sum += content.sum_meters %>
+                </tr>
+                <% end %>
+              <% end %>
+              <tr>
+                  <th>Total Distance</th>
+                  <td colspan="6"></td>
+                  <td><%= @sum %>m</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <button class="print-btn btn-lg btn-success">印刷する<i class="fa-solid fa-print"></i></button>
+    </div>
+    <div class="col-md-4 text-center" id="copy-element">
+      <button class="copy-btn btn-lg btn-success">urlをコピーする<i class="fa-solid fa-copy"></i></button>
+    </div>
+    <div class="col-md-3 text-center">
+      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
+      <i class="fa-brands fa-twitter-square fa-3x"></i>
+      <% end %>
+      <%= link_to "https://social-plugins.line.me/lineit/share?url=https://a35485928bb64ca6b1f0400769de8061.vfs.cloud9.ap-northeast-1.amazonaws.com/" do %>
+      <i class="fa-brands fa-line fa-3x" style="color:#00ff00;"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

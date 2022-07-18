@@ -1,37 +1,64 @@
-<header class="p-3 bg-dark text-dark border-bottom border-dark">
-  <div class="row">
-  <% if user_signed_in? %>
-        <%= link_to(destroy_user_session_path,method: :delete) do %>
-          <button type="button" class="btn btn-info me-2">ログアウト</button>
-        <% end %>
+<header>
+  <nav class="navbar header-content">
+    <div class="brand">
+      <%= link_to(root_path,class:"navbar-brand",style:"opacity: 0.8;") do %>
+      <%= image_tag 'dolphin.png', :size =>'200x60' %>
+      <% end %>
+    </div>
+
+      <% if user_signed_in? %>
+      <ul  style="opacity: 1;">
+         <%#検索ボタン%>
+        <button class="btn" type="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapseExample"><%= image_tag 'search.png', :size =>'30x30' %></button>
+        <%#投稿一覧ボタン%>
         <%= link_to(posts_path) do %>
-          <button type="button" class="btn btn-light">top</button>
+          <button class="btn"><%= image_tag 'Swieet.png', :size =>'30x30'%></button>
         <% end %>
+        <%#マイページボタン%>
         <%= link_to(mypage_path) do %>
-          <button type="button" class="btn btn-light">mypage</button>
+            <button class="btn"><%= image_tag 'mypage.png', :size =>'30x30' %></button>
         <% end %>
-        <%= link_to(new_menu_path) do %>
-          <button type="button" class="btn btn-light">Menu作成</button>
+        <%#メニューボタン%>
+        <%= link_to(mypagemenus_path) do %>
+           <button class="btn"><%= image_tag 'menu.png', :size =>'30x30' %></button>
         <% end %>
-        <%= render 'layouts/searchform' %>
-       
-    <% elsif admin_signed_in? %>
+        <%#ログアウトボタン%>
+        <%= link_to(destroy_user_session_path,method: :delete) do %>
+          <button class="btn"><%= image_tag 'logout.png', :size =>'30x30' %></button>
+        <% end %>
+      </ul>
+      <div class="form-inline collapse" id="collapse-search">
+          <%= render 'layouts/searchform' %>
+      </div>
+
+      <% elsif admin_signed_in? %>
+      <ul  style="opacity: 1;">
+        <%= link_to(admin_top_path) do %>
+          <button type="button" class="btn"><%= image_tag 'mypage.png', :size =>'30x30' %></button>
+        <% end %>
+        <%= link_to(admin_posts_path) do %>
+          <button type="button" class="btn"><%= image_tag 'Swieet.png', :size =>'30x30' %></button>
+        <% end %>
+        <%= link_to(admin_users_path) do %>
+          <button type="button" class="btn"><%= image_tag 'registration.png', :size =>'30x30' %></button>
+        <% end %>
         <%= link_to(destroy_admin_session_path,method: :delete) do %>
-        <button type="button" class="btn btn-info me-2">ログアウト</button>
+        <button type="button" class="btn"><%= image_tag 'logout.png', :size =>'30x30' %></button>
         <% end %>
-    <% else %>
+      </ul>
+      <% else %>
+      <ul  style="opacity: 1;">
         <%= link_to(new_user_session_path) do %>
-        <button type="button" class="btn btn-info">ログイン</button>
+        <button type="button" class="btn">Login<%= image_tag 'login.png', :size =>'30x30' %></button>
         <% end %>
         <%= link_to(new_user_registration_path) do %>
-        <button type="button" class="btn btn-warning">新規登録</button>
-        <% end %>
-        <%= link_to(root_path) do %>
-        <button type="button" class="btn btn-light">top</button>
+        <button type="button" class="btn">会員登録<%= image_tag 'registration.png', :size =>'30x30' %></button>
         <% end %>
         <%= link_to(about_path) do %>
-        <button type="button" class="btn btn-light">about</button>
+        <button type="button" class="btn">Swieetについて</button>
         <% end %>
-    <% end %>
-  </div>
+      </ul>
+      <% end %>
+
+  </nav>
 </header>

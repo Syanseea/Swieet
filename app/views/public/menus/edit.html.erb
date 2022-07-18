@@ -1,2 +1,65 @@
-<h1>Public::Menus#edit</h1>
-<p>Find me in app/views/public/menus/edit.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <% #サイドバー %>
+    <div class="col-md-3 mt-4">
+       <% #投稿フォーム%>
+      <%= render 'public/posts/form', post: @post1 %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="mt-4 rounded-lg border border-dark text-center">Menu編集</h2>
+        </div>
+      </div>
+      <% #menu作成フォーム %>
+
+      <div class="row mb-2 border border-dark rounded-lg">
+        <div class="container">
+          <%= form_with model: @menu,method: :patch, local: true do |f| %>
+          <%= render 'layouts/error_messages', object: f.object %>
+            <% #menuのフォーム部分 %>
+            <div class="row mt-2 mx-1 border-bottom border-dark">
+              <div class="col-md-4 offset-md-1 form-inline">
+                <h5>日付：<%= f.date_field :dating, class: 'form-control' %></h5>
+              </div>
+              <div class="col-md-7 form-inline">
+                <h5>タイトル：<%= f.text_field :title, class: 'form-control', placeholder:'例)体力強化メニュー' %></h5>
+              </div>
+            </div>
+
+            <% #themeのフォーム部分 %>
+            <div class="row mx-1">
+
+              <%= f.fields_for :themes do |theme| %>
+                <%= render 'public/menus/theme_fields', f: theme %>
+              <% end %>
+
+              <div class="links">
+                  <%= link_to_add_association f, :themes do %>
+                  <i class="fa-solid fa-circle-plus"></i>メニューを追加
+                  <% end %>
+              </div>
+
+            </div>
+            <div class="row mx-1 mt-2 border-top border-dark">
+              <div class="col mt-2 mb-2 text-center">
+
+                <%= f.radio_button :is_active, true %><%= f.label :"公開する" %>
+                <%= f.radio_button :is_active, false %><%= f.label :"非公開にする" %>
+              </div>
+            </div>
+            <div class="row mx-1 mt-2 border-top border-dark">
+              <div class="col mt-2 mb-2 text-center">
+              <%= f.submit "編集を保存する", class:'btn btn-primary' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

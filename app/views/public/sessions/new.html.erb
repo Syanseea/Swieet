@@ -1,20 +1,22 @@
+<div class="session-back">
+  
+  <div class="form-signin">
 
-<div class="form-signin mt-5">
+    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+    <hr class="colorgraph"><br>
 
-  <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
-  <hr class="colorgraph"><br>
-  
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
-    <%= f.email_field :email, class:"form-control", :placeholder => "Enter your email", autofocus: true, autocomplete: "email" %>
-    <%= f.password_field :password, class:"form-control", :placeholder => "Enter your password", autocomplete: "current-password" %>
-  
-  
-  <div class="actions">
-    <%= f.submit "ログイン", class: "mt-2 btn btn-lg btn-primary btn-block" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <%= f.email_field :email, class:"form-control", :placeholder => "Enter your email", autofocus: true, autocomplete: "email" %>
+      <%= f.password_field :password, class:"form-control", :placeholder => "Enter your password", autocomplete: "current-password" %>
+
+
+    <div class="actions">
+      <%= f.submit "ログイン", class: "mt-2 btn btn-lg btn-primary btn-block" %>
+    </div>
+    <% end %>
+
+    <p class="mt-4">会員登録がお済でない方は<%= render "public/shared/links" %>から新規登録を行ってください。</p>
+
   </div>
-  <% end %>
-  
-  <p class="mt-4">会員登録がお済でない方は<%= render "public/shared/links" %>から新規登録を行ってください。</p>
-
 </div>

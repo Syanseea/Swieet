@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2 class="mt-4 rounded-lg border border-dark text-center">会員TOP画面</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mx-2 text-danger">
+      ※ここは、管理者のためのページです。
+      個人情報等が表示されますので、取り扱いの際は、周囲を確認の上ご利用ください
+
+    </div>
+  </div>
+  <div class="row mt-4" style="height: 600px;">
+    <div class="col mx-2">
+      現在は以下の項目が管理可能です。<br>
+      <%= link_to(admin_posts_path) do %>
+      ・投稿一覧
+      <% end %><br>
+      <%= link_to(admin_users_path) do %>
+      ・会員一覧
+      <% end %>
+    </div>
+  </div>
+</div>

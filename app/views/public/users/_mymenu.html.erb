@@ -1,0 +1,49 @@
+<div class="row mb-4">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>作成日時</th>
+          <th>Menuタイトル</th>
+          <th>公開ステータス</th>
+          <th colspan="2">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% menus.each do |menu| %>
+        <tr>
+
+          <td>
+            <%= link_to menu_path(menu) do %>
+              <%= l menu.created_at %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to menu_path(menu) do %>
+              <%= menu.title %>
+            <% end %>
+          </td>
+
+          <td>
+            <% if menu.is_active == false %>
+              <p class="text-muted">非公開中</p>
+            <% else %>
+              <p class="text-success">公開中</p>
+            <% end %>
+          </td>
+          <% if current_user == menu.user %>
+          <td>
+              <%= link_to(edit_menu_path(menu)) do %>
+                <button type="button" class="btn btn-secondary">edit<i class="fa-solid fa-gear"></i></button>
+              <% end %>
+          </td>
+          <td>
+              <%= link_to(menu_path(menu),method: :delete, data: { confirm: '本当に消しますか？' }) do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

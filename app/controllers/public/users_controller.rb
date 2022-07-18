@@ -21,6 +21,9 @@ class Public::UsersController < ApplicationController
   end
 
   def menus
+    @post1 = Post.new
+    @user = User.find(params[:id])
+    @menus = @user.menus.where(is_active: 'true')
   end
 
   def mypage
@@ -44,7 +47,7 @@ class Public::UsersController < ApplicationController
 
     @post1 = Post.new
     @user = current_user
-
+    @menus = @user.menus.all
   end
 
   private
