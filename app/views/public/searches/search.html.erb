@@ -61,6 +61,10 @@
                 </div>
               <% end %>
             </div>
+            <%#ページネーション%>
+            <div class="mx-auto mt-1">
+              <%= paginate @users %>
+            </div>
           </div>
           <div class="tab_content" id="search_posts_index">
             <div class="rab_content_description">

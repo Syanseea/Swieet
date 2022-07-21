@@ -22,14 +22,16 @@
 
     <div class="row mt-5">
       <div class="col-md-4">
-       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %> 
+       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %>
        <%= link_to(user_followings_path(user.id)) do %>following<%= user.followings.count %>人<% end %>
       </div>
+      <% if user.name != "guestuser" %>
       <div class="col-md-4 offset-md-4">
         <%= link_to(edit_user_path(user.id)) do %>
         <button type="button" class="btn btn-secondary btn-block">profile edit<i class="fa-solid fa-gear"></i></button>
         <% end %>
       </div>
+      <% end %>
     </div>
     <div class="row mt-1 mb-2 ">
       <div class="col">

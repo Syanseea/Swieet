@@ -1,4 +1,5 @@
 class Public::MenusController < ApplicationController
+  before_action :authenticate_user!
   def new
     @post1 = Post.new
     @menu = Menu.new
@@ -38,7 +39,7 @@ class Public::MenusController < ApplicationController
     if @menu.update(menu_params)
       redirect_to menu_path(@menu)
     else
-      render 'new'
+      render 'edit'
     end
 
   end

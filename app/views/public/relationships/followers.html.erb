@@ -61,6 +61,10 @@
                 </div>
               <% end %>
             </div>
+            <%#ページネーション%>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+              <%= paginate @followers %>
+            </div>
           </div>
           <div class="tab_content" id="following_content">
             <div class="rab_content_description">
@@ -104,6 +108,10 @@
                   </div>
                 </div>
               <% end %>
+            </div>
+            <%#ページネーション%>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+              <%= paginate @followings %>
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@
       </div>
       <% end %>
       <div class="row bg-light">
-        <div class="col-md-2 offset-md-2">
+        <div class="col-md-2 offset-md-2" id="favorite_buttons_<%= post.id %>">
         <% #いいね機能 %>
             <%= render 'public/posts/favorite', post: post %>
         </div>
@@ -40,4 +40,7 @@
       </div>
     </div>
   <% end %>
+  <div class="mx-auto mt-1">
+  <%= paginate posts %>
+  </div>
 </div>

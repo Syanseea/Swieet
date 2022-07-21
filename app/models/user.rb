@@ -14,7 +14,15 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :followings, through: :relationships, source: :followed
   has_one_attached :profile_image
+  
+  validates :name, presence: true
 
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 
   def get_profile_image(width, height)
 
@@ -24,25 +32,25 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit:[width, height]).processed
   end
-  
+
   def follow(user)
     relationships.create(followed_id: user.id)
-  end 
-  
+  end
+
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
-  end 
-  
+  end
+
   def following?(user)
     followings.include?(user)
-  end 
-  
+  end
+
   def self.looks(word)
     unless word == ""
       @user = User.where("name LIKE?","%#{word}%")
     else
       @user = User.all
-    end 
-  end 
-      
+    end
+  end
+
 end

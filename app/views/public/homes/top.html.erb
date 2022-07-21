@@ -3,7 +3,7 @@
 <% #カルーセル %>
   <div class="row mt-4">
     <div class="top-carousel">
-    <div id="carouselExampleIndicators" class="carousel slide" data-interval=6000 data-pause=false data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval=5000 data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -27,16 +27,21 @@
     </div>
     </div>
   </div>
+  <div class="row">
+    <%= image_tag 'flag.png', style:"width: 100%;"%>
+  </div>
 
-
-<div>
+<div class="row mx-4 mt-5">
+  <div class="col-md-4 offset-md-2">
   <%= link_to(new_user_session_path) do %>
-    <button type="button" class="btn btn-info me-2">ログイン</button>
+    <button type="button" class="btn"><%= image_tag 'boy.png' %><br><h4><b>ログイン・ゲストの方はこちらから</b></h4></button>
   <% end %>
-
+  </div>
+  <div class="col-md-5 mt-3 offset-md-1">
   <%= link_to(new_user_registration_path) do %>
-    <button type="button" class="btn btn-warning">新規登録</button>
+    <button type="button" class="btn"><%= image_tag 'girl.png' %><br><h4><b>新規登録の方はこちら</b></h4></button>
   <% end %>
+  </div>
 </div>
 
 </div>

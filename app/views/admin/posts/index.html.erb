@@ -22,7 +22,7 @@
             タイトル：<%= post.title %>
           </div>
           <div class="col-mb-2">
-            <%= link_to admin_post_path(post), method: :delete do %>
+            <%= link_to admin_post_path(post), method: :delete, data: { confirm: '本当にBanしますか？' } do %>
               <button type="button" class="btn btn-danger">投稿をBanする</button>
             <% end %>
           </div>

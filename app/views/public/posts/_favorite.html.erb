@@ -1,9 +1,9 @@
 <% if post.favorited_by?(current_user) %>
-  <%= link_to post_favorites_path(post), method: :delete do %>
+  <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
   <i class="fa-solid fa-heart heart"></i>  <%= post.favorites.count %>Likes
   <% end %>
 <% else %>
- <%= link_to post_favorites_path(post), method: :post do %>
+ <%= link_to post_favorites_path(post), method: :post, remote: true do %>
  <i class="fa-solid fa-heart heart-empty"></i> <%= post.favorites.count %>Likes
  <% end %>
 <% end %>

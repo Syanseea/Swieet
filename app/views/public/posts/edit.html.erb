@@ -15,6 +15,14 @@
         </div>
         <div class="row mb-2">
           <div class="col rounded-lg border border-dark">
+            <% if @post.errors.any? %>
+          　　<%= @post.errors.count %>件のエラーが発生しました
+                <ul>
+                  <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+            <% end %>
             <%= form_with model:@post, local:true do |f| %>
 
               <div class="form-group mt-3">
@@ -28,7 +36,7 @@
               </div>
 
               <div class="form-group text-center">
-                <%= f.submit "Edit", class: 'btn-lg btn-success' %>
+                <%= f.submit "編集を保存する", class: 'btn-lg btn-primary' %>
               </div>
             <% end %>
           </div>

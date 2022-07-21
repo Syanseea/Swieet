@@ -1,8 +1,8 @@
 <div class="session-back">
-  
+
   <div class="form-signin">
 
-    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+    <h3 class="form-signin-heading">Welcome Back!<br>Please Sign In</h3>
     <hr class="colorgraph"><br>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,6 +15,7 @@
       <%= f.submit "ログイン", class: "mt-2 btn btn-lg btn-primary btn-block" %>
     </div>
     <% end %>
+　　<p class="mt-4">ゲストの方は<%= link_to 'こちら', users_guest_sign_in_path,method: :post %>をクリックしてください。</p>
 
     <p class="mt-4">会員登録がお済でない方は<%= render "public/shared/links" %>から新規登録を行ってください。</p>
 

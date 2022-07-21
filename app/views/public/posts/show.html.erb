@@ -57,7 +57,7 @@
 
           <div class="row bg-light">
 
-            <div class="col-md-2 offset-md-2">
+            <div class="col-md-2 offset-md-2" id="favorite_buttons_<%= @post.id %>">
               <% #いいね機能 %>
             <%= render 'public/posts/favorite', post: @post %>
             </div>
@@ -71,7 +71,7 @@
             <% if current_user == @post.user %>
             <div class="col-md-2 offset-md-2">
               <%= link_to(edit_post_path(@post.id)) do %>
-               <button type="button" class="btn-sm btn-success">編集する</button>
+               <button type="button" class="btn btn-secondary">edit<i class="fa-solid fa-gear"></i></button>
               <% end %>
             </div>
             <div class="col-md-2">
