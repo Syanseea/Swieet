@@ -12,11 +12,13 @@
         <% end %>
       </h2>
     </div>
+    <% if current_user == @menu.user %>
     <div class="col-md-2 offset-md-6">
       <%= link_to(edit_menu_path(@menu)) do %>
         <button type="button" class="btn btn-secondary mt-4" style="width: 120px;">edit<i class="fa-solid fa-gear"></i></button>
       <% end %>
     </div>
+    <% end %>
   </div>
 
   <div class="print-area">

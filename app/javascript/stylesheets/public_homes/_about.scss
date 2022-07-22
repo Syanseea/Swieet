@@ -1,0 +1,69 @@
+.about-bg{
+  background-image: url(/assets/about-bg.jpg);
+  background-size: cover;
+  overflow: hidden;
+}
+.about1-back{
+  background-color: #afeeee;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.about-border{
+  border-radius: 10px;
+}
+
+.about1-design{
+  font-family: 'Noto Serif JP', serif;
+  background-color: rgba(245, 245, 245,0.8);
+  border-radius: 0px 10px 10px 0px;
+}
+
+.about1-topic {
+  position: relative;
+  padding: 1rem .5rem;
+}
+
+.about1-topic:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  content: '';
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2af598), to(#009efd));
+  background-image: -webkit-linear-gradient(right, #2af598 0%, #009efd 100%);
+  background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+}
+
+.about2-topic {
+  position: relative;
+  padding: 1rem .5rem;
+}
+
+.about2-topic:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  content: '';
+  background-image: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background-image: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+.about2-back{
+  background-color: #ff7f50;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.about2-photo{
+  border-radius: 10px;
+}
+
+.about2-design{
+  font-family: 'Noto Serif JP', serif;
+  background-color: rgba(245, 245, 245,0.8);
+  border-radius: 10px 0px 0px 10px;
+}

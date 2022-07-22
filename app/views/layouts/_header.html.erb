@@ -49,13 +49,13 @@
       <% else %>
       <ul  style="opacity: 1;">
         <%= link_to(new_user_session_path) do %>
-        <button type="button" class="btn">Login<%= image_tag 'login.png', :size =>'30x30' %></button>
+        <button type="button" class="font-head btn"><b>Login</b><%= image_tag 'login.png', :size =>'30x30' %></button>
         <% end %>
         <%= link_to(new_user_registration_path) do %>
-        <button type="button" class="btn">会員登録<%= image_tag 'registration.png', :size =>'30x30' %></button>
+        <button type="button" class="font-head btn"><b>会員登録</b><%= image_tag 'registration.png', :size =>'30x30' %></button>
         <% end %>
         <%= link_to(about_path) do %>
-        <button type="button" class="btn">Swieetについて</button>
+        <button type="button" class="font-head btn"><b>Swieetについて</b></button>
         <% end %>
       </ul>
       <% end %>

@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(10)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -23,8 +23,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
-      @post = Post.new
-      @posts = Post.where(user_id: [current_user.id, *current_user.following_ids])
+      @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc).page(params[:page]).per(10)
       render 'index'
     end
   end

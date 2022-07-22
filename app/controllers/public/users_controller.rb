@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @post1 = Post.new
     @user = User.find(params[:id])
-    @posts = @user.posts.all.page(params[:page]).per(10)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
@@ -25,14 +25,14 @@ class Public::UsersController < ApplicationController
   def menus
     @post1 = Post.new
     @user = User.find(params[:id])
-    @menus = @user.menus.where(is_active: 'true').page(params[:page]).per(10)
+    @menus = @user.menus.where(is_active: 'true').order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def mypage
 
     @post1 = Post.new
     @user = current_user
-    @posts = @user.posts.all.page(params[:page]).per(10)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(10)
 
   end
 
@@ -50,7 +50,7 @@ class Public::UsersController < ApplicationController
 
     @post1 = Post.new
     @user = current_user
-    @menus = @user.menus.all.page(params[:page]).per(10)
+    @menus = @user.menus.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

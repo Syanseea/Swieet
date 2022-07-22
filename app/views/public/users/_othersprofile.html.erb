@@ -10,7 +10,7 @@
     <div class="row">
 
       <div class="col-md-4">
-        <%= image_tag user.get_profile_image(200,200) %>
+        <%= image_tag user.get_profile_image(200,200),class:"rounded-circle" %>
       </div>
       <div class="col-md-8">
         <b>Nick Name</b>
@@ -22,7 +22,7 @@
 
     <div class="row mt-5">
       <div class="col-md-4">
-       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %> 
+       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %>
        <%= link_to(user_followings_path(user.id)) do %>following<%= user.followings.count %>人<% end %>
       </div>
       <div class="col-md-4 offset-md-4">

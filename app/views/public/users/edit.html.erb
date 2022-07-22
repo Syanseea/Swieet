@@ -15,14 +15,7 @@
 
       <div class="row mb-2">
         <div class="col rounded-lg border border-dark">
-          <% if @user.errors.any? %>
-            <%= @user.errors.count %>件のエラーが発生しました
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-         　 </ul>
-     　　　　 <% end %>
+     　　<%= render 'layouts/error_messages', object:@user %>
           <%= form_with model:@user, local:true do |f| %>
             <div class="form-group mt-3">
               <b><%= f.label :"Nick Name" %></b>

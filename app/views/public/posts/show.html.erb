@@ -24,11 +24,11 @@
               <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
               <% if current_user == @post.user %>
                 <%= link_to(mypage_path) do %>
-                <%= image_tag @post.user.get_profile_image(100,100) %>
+                <%= image_tag @post.user.get_profile_image(100,100), class:"rounded-circle" %>
                 <% end %>
               <% else %>
                 <%= link_to(user_path(@post.user.id)) do %>
-                <%= image_tag @post.user.get_profile_image(100,100) %>
+                <%= image_tag @post.user.get_profile_image(100,100), class:"rounded-circle" %>
                 <% end %>
               <% end %>
             </div>
@@ -94,11 +94,11 @@
               <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
               <% if current_user == post_comment.user %>
                 <%= link_to(mypage_path) do %>
-              　　<%= image_tag post_comment.user.get_profile_image(100,100) %>
+              　　<%= image_tag post_comment.user.get_profile_image(100,100), class:"rounded-circle" %>
               　　<% end %>
               <% else %>
                 <%= link_to(user_path(post_comment.post.user.id)) do %>
-                  <%= image_tag post_comment.user.get_profile_image(100,100) %>
+                  <%= image_tag post_comment.user.get_profile_image(100,100), class:"rounded-circle" %>
               　<% end %>
               <% end %>
             </div>
@@ -149,6 +149,7 @@
       <% #コメント %>
       <div class="row">
         <div class="container mt-2">
+          <%= render 'layouts/error_messages', object: @post_comment %>
           <%= form_with model: [@post, @post_comment] do |f| %>
           <div class="row">
           <div class="col-md-10 form-group">
