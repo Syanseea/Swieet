@@ -24,6 +24,7 @@ class Public::MenusController < ApplicationController
   end
 
   def show
+    @post1 = Post.new
     @menu = Menu.find(params[:id])
   end
 

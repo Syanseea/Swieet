@@ -1,12 +1,13 @@
-<div class="row mb-2">
-  
+<div class="row mt-4 mb-2">
+
   <% posts.each do |post| %>
-    <div class="container mt-4 border-bottom border-dark">
+    <div class="container mt-4" style="width: 80%;">
 
-      <div class="row">
+      <div class="row font-default">
         <%#プロフィール画像 %>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+          <div class="text-center">
           <% if current_user == post.user %>
             <%= link_to(mypage_path) do %>
             <%= image_tag post.user.get_profile_image(100,100), class:"rounded-circle" %>
@@ -16,52 +17,51 @@
             <%= image_tag post.user.get_profile_image(100,100), class:"rounded-circle" %>
             <% end %>
           <% end %>
-        </div>
-        <div class="col-md-10">
-
+          </div>
+          <div class="mt-2 text-center">
           <% if current_user == post.user %>
             <%= link_to(mypage_path) do %>
-              ユーザー名：<%= post.user.name %>
+              <h4><%= post.user.name %><h4>
             <% end %>
           <% else %>
             <%= link_to(user_path(post.user.id)) do %>
-              ユーザー名：<%= post.user.name %>
+              <h4><%= post.user.name %></h4>
             <% end %>
-          <% end %><br>
-
-          <%= link_to (post_path(post.id)) do %>
-            作成日時:<%= l post.created_at %><br>
-            タイトル：<%= post.title %>
           <% end %>
+          </div>
+          <div class="row text-center">
+            <%#いいね機能 %>
+            <div class="col-md-4 offset-md-2" id="favorite_buttons_<%= post.id %>">
+              <%= render 'public/posts/favorite', post: post %>
+            </div>
+            <%#コメント数 %>
+            <div class="col-md-6">
+              <%= link_to(post_path(post.id)) do %>
+              <i class="fa-solid fa-comment"></i> <%= post.post_comments.count %>
+              <% end %>
+            </div>
+          </div>
+          <div class="text-center text-muted">
+            <%= l post.created_at %>
+          </div>
         </div>
+        <%= link_to (post_path(post.id)) do %>
+        <div class="col-md-9">
+        <div class="swieet-content">
+          <div class="border-bottom border-dark">
+            <span class="lead">Title『<%= post.title %>』</span>
+            <span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post.created_at) %>前</span>
+          </div>
+          <div class="content-text">
+            Content：<br><%= Rinku.auto_link(post.content, :all, 'target="_blank"').html_safe %>
+          </div>
+        </div>
+        </div>
+        <% end %>
       </div>
-
-      <%= link_to (post_path(post.id)) do %>
-      <div class="row mt-2 mb-2">
-        <div class="col-md-10 offset-md-2">
-          コンテンツ：<%= Rinku.auto_link(post.content, :all, 'target="_blank"').html_safe %>
-        </div>
-      </div>
-      <% end %>
-
-      <div class="row bg-light">
-        <div class="col-md-2 offset-md-2" id="favorite_buttons_<%= post.id %>">
-        <%#いいね機能 %>
-          <%= render 'public/posts/favorite', post: post %>
-        </div>
-
-        <%#コメント数 %>
-        <div class="col-md-2">
-          <%= link_to(post_path(post.id)) do %>
-          <i class="fa-solid fa-comment"></i> <%= post.post_comments.count %>
-          <% end %>
-        </div>
-
-      </div>
-
     </div>
   <% end %>
-  <div class="mx-auto mt-1">
+</div>
+<div class="row mt-1 d-flex align-items-center justify-content-center">
     <%= paginate posts %>
-  </div>
 </div>

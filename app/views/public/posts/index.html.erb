@@ -1,25 +1,25 @@
 
-  <div class="container px-5 px-sm-0">
+  <div class="container-fluid px-sm-0">
     <div class="row">
       <% #サイドバー %>
-      <div class="col-md-3 mt-4">
-         <% #投稿フォーム%>
-         <%= render 'layouts/error_messages', object: @post %>
+      <div class="col-md-3 px-5 sidebar-bg">
+         <% #サイドバー %>
+
         <%= render 'public/posts/form', post: @post %>
 
       </div>
 
-      <div class="col-md-8 offset-md-1">
+      <div class="col-md-9 px-5 sns-bg">
 
         <div class="row">
           <div class="col-md-4">
-            <h2 class="mt-4 rounded-lg border border-dark text-center">みんなのSwieet</h2>
+            <h2 class="mt-4 topic-main"><i>Swieets</i></h2>
           </div>
         </div>
         <% #投稿一覧%>
         <% if @posts.count == 0 %>
-        Swieetが存在しません！<br>
-        Swieetするかユーザーをフォローしましょう！
+        <p class="font-default">Swieetが存在しません！</p>
+        <p class="font-default">Swieetするかユーザーをフォローしましょう！</p>
         <% end %>
         <%= render "public/posts/post_index", posts: @posts %>
       </div>

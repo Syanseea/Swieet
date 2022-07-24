@@ -1,15 +1,17 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <% #サイドバー %>
-    <div class="col-md-3 mt-4">
-       <% #投稿フォーム%>
-      <%= render 'public/posts/form', post: @post1 %>
-    </div>
+<div class="container-fluid px-sm-0">
+    <div class="row">
+      <% #サイドバー %>
+      <div class="col-md-3 px-5 sidebar-bg">
+         <% #サイドバー %>
 
-    <div class="col-md-8 offset-md-1">
+        <%= render 'public/posts/form', post: @post1 %>
+
+      </div>
+
+      <div class="col-md-9 px-5 sns-bg">
       <div class="row">
         <div class="col-md-6">
-          <h2 class="mt-4 rounded-lg border border-dark text-center"><%= @user.name %>さん</h2>
+          <h2 class="mt-4 topic-main"><%= @user.name %>さん</h2>
         </div>
       </div>
       <div class="row mb-4">

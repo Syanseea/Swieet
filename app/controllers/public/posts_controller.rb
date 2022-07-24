@@ -41,6 +41,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
+      @post1 = Post.new
       render 'edit'
     end
   end

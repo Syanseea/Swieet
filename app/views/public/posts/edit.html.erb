@@ -1,20 +1,22 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
-    <% #サイドバー %>
-    <div class="col-md-3 mt-4">
-       <% #投稿フォーム%>
-      <%= render 'public/posts/form', post: @post1 %>
-    </div>
+<div class="container-fluid px-sm-0">
+    <div class="row">
+      <% #サイドバー %>
+      <div class="col-md-3 px-5 sidebar-bg">
+         <% #サイドバー %>
 
-    <div class="col-md-8 offset-md-1">
+        <%= render 'public/posts/form', post: @post1 %>
+
+      </div>
+
+      <div class="col-md-9 px-5 sns-bg">
 
         <div class="row">
           <div class="col-md-4">
-            <h2 class="mt-4 rounded-lg border border-dark text-center">Swieet Edit</h2>
+            <h2 class="mt-4 topic-main">Swieet Edit</h2>
           </div>
         </div>
-        <div class="row mb-2">
-          <div class="col rounded-lg border border-dark">
+        <div class="row mb-2 mt-4">
+          <div class="container rounded-lg edit-form" style="width: 80%;">
             <%= render 'layouts/error_messages', object: @post %>
             <%= form_with model:@post, local:true do |f| %>
 
@@ -29,7 +31,7 @@
               </div>
 
               <div class="form-group text-center">
-                <%= f.submit "編集を保存する", class: 'btn-lg btn-primary' %>
+                <%= f.submit "編集を保存する", class: 'post-btn btn text-white' %>
               </div>
             <% end %>
           </div>

@@ -1,27 +1,29 @@
-<div class="container px-5 px-sm-0">
+<div class="container-fluid px-sm-0">
   <div class="row">
-    <% #サイドバー %>
-    <div class="col-md-3 mt-4">
-       <% #投稿フォーム%>
+      <% #サイドバー %>
+      <div class="col-md-3 px-5 sidebar-bg">
+         <% #サイドバー %>
 
-      <%= render 'public/posts/form', post: @post1 %>
-    </div>
-    <% #投稿詳細 %>
-    <div class="col-md-8 offset-md-1">
+        <%= render 'public/posts/form', post: @post1 %>
+
+      </div>
+
+    <div class="col-md-9 px-5 sns-bg">
 
       <div class="row">
         <div class="col-md-4">
-          <h2 class="mt-4 rounded-lg border border-dark text-center">Swieet Detail</h2>
+          <h2 class="mt-4 topic-main">Swieet Detail</h2>
         </div>
       </div>
 
-      <div class="row">
-        <div class="container mt-4 border-bottom border-dark">
+      <div class="row mt-4 mb-2">
+        <div class="container mt-4" style="width: 80%;">
 
-          <div class="row">
+          <div class="row font-default">
             <% #プロフィール画像 %>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <div class="text-center">
               <% if current_user == @post.user %>
                 <%= link_to(mypage_path) do %>
                 <%= image_tag @post.user.get_profile_image(100,100), class:"rounded-circle" %>
@@ -31,133 +33,144 @@
                 <%= image_tag @post.user.get_profile_image(100,100), class:"rounded-circle" %>
                 <% end %>
               <% end %>
-            </div>
-            <div class="col-md-10">
-              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              </div>
+              <div class="mt-2 text-center">
+                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <% if current_user == @post.user %>
+                  <%= link_to(mypage_path) do %>
+                    <h4><%= @post.user.name %></h4>
+                  <% end %>
+                <% else %>
+                  <%= link_to(user_path(@post.user.id)) do %>
+                    <h4><%= @post.user.name %></h4>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="row text-center">
+                <% #いいね機能 %>
+                <div class="col-md-4 offset-md-2" id="favorite_buttons_<%= @post.id %>">
+                <%= render 'public/posts/favorite', post: @post %>
+                </div>
+                <% #コメント数 %>
+                <div class="col-md-6">
+                  <i class="fa-solid fa-comment"></i> <%= @post.post_comments.count %>
+                </div>
+              </div>
+
+              <div class="text-center text-muted">
+                <%= l @post.created_at %>
+              </div>
+
               <% if current_user == @post.user %>
-                <%= link_to(mypage_path) do %>
-                  ユーザー名：<%= @post.user.name %>
-                <% end %>
-              <% else %>
-                <%= link_to(user_path(@post.user.id)) do %>
-                  ユーザー名：<%= @post.user.name %>
-                <% end %>
-              <% end %>
-
-              <br>作成日時:<%= l @post.created_at %><br>
-                  タイトル：<%= @post.title %>
-            </div>
-          </div>
-
-          <div class="row mt-2 mb-2">
-            <div class="col-md-10 offset-md-2">
-              コンテンツ：<%= Rinku.auto_link(@post.content, :all, 'target="_blank"').html_safe %>
-            </div>
-          </div>
-
-          <div class="row bg-light">
-
-            <div class="col-md-2 offset-md-2" id="favorite_buttons_<%= @post.id %>">
-              <% #いいね機能 %>
-            <%= render 'public/posts/favorite', post: @post %>
-            </div>
-
-            <% #コメント数 %>
-            <div class="col-md-2">
-              <i class="fa-solid fa-comment"></i> <%= @post.post_comments.count %>
-            </div>
-
-
-            <% if current_user == @post.user %>
-            <div class="col-md-2 offset-md-2">
-              <%= link_to(edit_post_path(@post.id)) do %>
-               <button type="button" class="btn btn-secondary">edit<i class="fa-solid fa-gear"></i></button>
+              <div class="row mt-1">
+                <div class="col-md-6 text-center">
+                  <%= link_to(edit_post_path(@post.id)) do %>
+                   <button type="button" class="btn-sm btn-secondary btn-block">Edit<i class="fa-solid fa-gear"></i></button>
+                  <% end %>
+                </div>
+                <div class="col-md-6 text-center">
+                  <%= link_to(post_path(@post.id),method: :delete, data: { confirm: '本当に消しますか？' }) do %>
+                   <button type="button" class="btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
+                  <% end %>
+                </div>
+              </div>
               <% end %>
             </div>
-            <div class="col-md-2">
-              <%= link_to(post_path(@post.id),method: :delete, data: { confirm: '本当に消しますか？' }) do %>
-               <i class="fa-solid fa-trash-can"></i>
-              <% end %>
+            <div class="col-md-9">
+            <div class="swieet-content">
+              <div class="border-bottom border-dark">
+                <span class="lead">Title『<%= @post.title %>』</span>
+                <span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(@post.created_at) %>前</span>
+              </div>
+              <div class="content-text">
+                Content：<br><%= Rinku.auto_link(@post.content, :all, 'target="_blank"').html_safe %>
+              </div>
             </div>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
+
       <% #コメント機能 %>
       <div class="row">
         <% @post.post_comments.each do |post_comment| %>
-        <div class="container mt-4 border-bottom border-dark">
-          <div class="row">
+        <div class="container mt-4" style="width: 80%;">
+          <div class="row font-default">
 
             <% #プロフィール画像 %>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <div class="text-center">
               <% if current_user == post_comment.user %>
                 <%= link_to(mypage_path) do %>
-              　　<%= image_tag post_comment.user.get_profile_image(100,100), class:"rounded-circle" %>
-              　　<% end %>
+                  <%= image_tag post_comment.user.get_profile_image(80,80), class:"rounded-circle" %>
+                <% end %>
               <% else %>
                 <%= link_to(user_path(post_comment.post.user.id)) do %>
-                  <%= image_tag post_comment.user.get_profile_image(100,100), class:"rounded-circle" %>
-              　<% end %>
+                  <%= image_tag post_comment.user.get_profile_image(80,80), class:"rounded-circle" %>
+                <% end %>
+              <% end %>
+              </div>
+              <div class="mt-2 text-center">
+                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <% if current_user == post_comment.user %>
+                  <%= link_to(mypage_path) do %>
+                    <h5><%= post_comment.user.name %></h5>
+                  <% end %>
+                <% else %>
+                  <%= link_to(user_path(post_comment.post.user.id)) do %>
+                    <h5><%= post_comment.user.name %></h5>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="text-center">
+                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <% if current_user == post_comment.post.user %>
+                  <%= link_to(mypage_path) do %>
+                    For:<%= post_comment.post.user.name %><br>
+                  <% end %>
+                <% else %>
+                  <%= link_to(user_path(post_comment.post.user.id)) do %>
+                    For:<%= post_comment.post.user.name %><br>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="text-center text-muted">
+                <%= l post_comment.created_at %>
+              </div>
+              <% if post_comment.user == current_user %>
+                <div class="text-center mt-1 mx-3">
+                  <%= link_to(post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' }) do %>
+                    <button type="button" class="btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
+                  <% end %>
+                </div>
               <% end %>
             </div>
             <% #comment content %>
-            <div class="col-md-10">
-              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
-              <% if current_user == post_comment.user %>
-                <%= link_to(mypage_path) do %>
-                  ユーザー名：<%= post_comment.user.name %><br>
-                <% end %>
-              <% else %>
-                <%= link_to(user_path(post_comment.post.user.id)) do %>
-                  ユーザー名：<%= post_comment.user.name %><br>
-                <% end %>
-              <% end %>
-              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
-              <% if current_user == post_comment.post.user %>
-                <%= link_to(mypage_path) do %>
-                  送信先　　：<%= post_comment.post.user.name %><br>
-                <% end %>
-              <% else %>
-                <%= link_to(user_path(post_comment.post.user.id)) do %>
-                  送信先　　：<%= post_comment.post.user.name %><br>
-                <% end %>
-              <% end %>
-
-              作成日時　：<%= l post_comment.created_at %><br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-10 offset-md-2">
-              コメント　：<%= post_comment.content %>
-            </div>
-          </div>
-          <div class="row bg-light">
-              <% if post_comment.user == current_user %>
-              <div class="col-md-2 offset-md-10">
-                <%= link_to(post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' }) do %>
-                  <i class="fa-solid fa-trash-can"></i>
-                <% end %>
+            <div class="col-md-9">
+            <div class="swieet-comment-content">
+              <div><span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post_comment.created_at) %>前</span></div>
+              <div class="content-text">
+              comment：<br><%= post_comment.content %>
               </div>
-              <% end %>
+            </div>
+            </div>
           </div>
-
         </div>
         <% end %>
       </div>
-      <% #コメント %>
-      <div class="row">
-        <div class="container mt-2">
+
+      <% #コメント送信機能 %>
+      <div class="row font-default mb-4">
+        <div class="container mt-2 post-form rounded-lg" style="width:80%;">
           <%= render 'layouts/error_messages', object: @post_comment %>
           <%= form_with model: [@post, @post_comment] do |f| %>
-          <div class="row">
-          <div class="col-md-10 form-group">
+          <div class="form-group">
+            <b><%= f.label :"Comment" %></b>
             <%= f.text_area :content, class: 'form-control post_comment', placeholder: "コメントをする" %>
           </div>
-          <div class="col-md-2">
-            <%= f.submit "送信する" %>
-          </div>
+          <div class="form-group text-center">
+            <%= f.submit "送信する", class: 'post-btn btn text-white' %>
           </div>
           <% end %>
         </div>

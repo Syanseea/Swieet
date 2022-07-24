@@ -8,8 +8,6 @@
 
       <% if user_signed_in? %>
       <ul  style="opacity: 1;">
-         <%#検索ボタン%>
-        <button class="btn" type="button" data-toggle="collapse" data-target="#collapse-search" aria-expanded="false" aria-controls="collapseExample"><%= image_tag 'search.png', :size =>'30x30' %></button>
         <%#投稿一覧ボタン%>
         <%= link_to(posts_path) do %>
           <button class="btn"><%= image_tag 'Swieet.png', :size =>'30x30'%></button>
@@ -27,9 +25,6 @@
           <button class="btn"><%= image_tag 'logout.png', :size =>'30x30' %></button>
         <% end %>
       </ul>
-      <div class="form-inline collapse" id="collapse-search">
-          <%= render 'layouts/searchform' %>
-      </div>
 
       <% elsif admin_signed_in? %>
       <ul  style="opacity: 1;">

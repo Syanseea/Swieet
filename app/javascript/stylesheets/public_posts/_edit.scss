@@ -1,6 +1,12 @@
-.swieet-content{
+.edit-form{
+  border: 3px solid #E6E0D5;
+  background-color: #E6E0D5;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.swieet-comment-content{
     position:relative;
-    width:600px;
+    width:400px;
     height:auto;
     background:#FFFFFF;
     padding:10px;
@@ -11,7 +17,7 @@
     -moz-border-radius:10px;
     text-shadow:0px 0px 0px #FFFFFF ;
 }
-.swieet-content:after,.swieet-content:before{
+.swieet-comment-content:after,.swieet-comment-content:before{
     border: solid transparent;
     content:'';
     height:0;
@@ -21,7 +27,7 @@
     right:100%;
     top:30%;
 }
-.swieet-content:after{
+.swieet-comment-content:after{
     border-color: rgba(255, 255, 255, 0);
     border-top-width:10px;
     border-bottom-width:10px;
@@ -30,7 +36,7 @@
     margin-top: -10px;
     border-right-color:#FFFFFF;
 }
-.swieet-content:before{
+.swieet-comment-content:before{
     border-color: rgba(0, 0, 0, 0);
     border-top-width:11px;
     border-bottom-width:11px;
@@ -39,8 +45,4 @@
     margin-top: -11px;
     margin-right: 1px;
     border-right-color:#000000;
-}
-
-.content-text{
-    overflow-wrap: break-word;
 }

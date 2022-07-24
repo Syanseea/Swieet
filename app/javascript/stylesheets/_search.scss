@@ -1,0 +1,36 @@
+.search {
+  width: 100%;
+  display: flex;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #E6E0D5;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #E6E0D5;
+  background: #E6E0D5;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wraps{
+  width: 100%;
+}

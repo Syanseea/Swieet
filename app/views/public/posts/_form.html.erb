@@ -1,10 +1,13 @@
+<div class="sidebar-fixed">
+<%= render 'layouts/searchform' %>
 
-<h2 class="rounded-lg border border-dark text-center">New Post</h2>
-  <div class="rounded-lg border border-dark">
- 　
+<h2 class="post-topic mt-4"><b><i>New Swieet </i></b><%= image_tag 'icondolphin.png', :size =>'60x40' %></h2><br>
+  <div class="post-form rounded-lg">
+
   <%= form_with model:post, local:true do |f| %>
 
     <div class="form-group mt-2 mx-1">
+    <%= render 'layouts/error_messages', object: post %>
       <b><%= f.label :"Title" %></b>
       <%= f.text_field :title, class: 'form-control post_title' %>
     </div>
@@ -15,13 +18,14 @@
     </div>
 
     <div class="form-group text-center mx-1">
-      <%= f.submit "Swieet", class: 'btn btn-primary btn-block' %>
+      <%= f.submit "Swieetする", class: 'post-btn btn text-white', style:'width: 80%;' %>
     </div>
   <% end %>
 
 </div>
-<div class="mt-2">
-<%= link_to (new_menu_path) do %>
-<button type="button" class="btn btn-info btn-block">Menuを作成</button>
+<div class="mt-4 menucreate">
+<%= link_to (new_menu_path), class:"menu-link" do %>
+<button type="button" class="menucreate-btn btn btn-block"><%= image_tag 'menucreate.png' %><br>Menuを作成</button>
 <% end %>
+</div>
 </div>
