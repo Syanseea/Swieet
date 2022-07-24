@@ -29,7 +29,15 @@ const imagePath = (name) => images(name, true)
 $(document).ready(function(){
    $(".copy-btn").click(function() {
   var url = $(location).attr('href');
-  navigator.clipboard.writeText(url);
+  var copyTextarea = document.createElement("textarea");
+  copyTextarea.style.position = "fixed";
+  copyTextarea.style.opacity = "0";
+  copyTextarea.textContent = url;
+  document.body.appendChild(copyTextarea);
+  copyTextarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(copyTextarea);
+  //navigator.clipboard.writeText(url);
 
   //alert("コピーできました！");
   $("#copy-element").append('<p>コピーが完了しました</p>')
