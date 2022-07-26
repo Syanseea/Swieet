@@ -1,11 +1,15 @@
 <header>
-  <nav class="navbar header-content">
+  <nav class="navbar navbar-expand-lg header-content">
     <div class="brand">
       <%= link_to(root_path,class:"navbar-brand",style:"opacity: 0.8;") do %>
       <%= image_tag 'dolphin.png', :size =>'200x60' %>
       <% end %>
     </div>
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-1"><i class="fa-solid fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <div>
       <% if user_signed_in? %>
       <ul  style="opacity: 1;">
         <%#投稿一覧ボタン%>
@@ -54,6 +58,7 @@
         <% end %>
       </ul>
       <% end %>
-
+    </div>
+   </div>
   </nav>
 </header>

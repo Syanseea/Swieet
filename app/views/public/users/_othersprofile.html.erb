@@ -4,26 +4,28 @@
     <h2 class="mt-4 topic-main"><%= user.name %>さんのProfile</h2>
   </div>
 </div>
-<div class="row">
+<div class="row font-default">
 
-  <div class="container border-bottom border-dark">
+  <div class="container">
     <div class="row">
 
-      <div class="col-md-4">
+      <div class="col-md-4 text-center">
         <%= image_tag user.get_profile_image(200,200),class:"rounded-circle" %>
       </div>
       <div class="col-md-8">
-        <b>Nick Name</b>
-        <br><%= user.name %>
-        <br><b>Introduction</b>
-        <br><%= user.introduction %>
+        <h3 class="text-muted">Nick Name</h3>
+        <h4><%= user.name %></h4>
+        <h3 class="text-muted">Introduction</h3>
+        <h4><%= user.introduction %></h4>
       </div>
     </div>
 
     <div class="row mt-5">
       <div class="col-md-4">
-       <%= link_to(user_followers_path(user.id)) do %>follower<%= user.followers.count %>人<% end %>
-       <%= link_to(user_followings_path(user.id)) do %>following<%= user.followings.count %>人<% end %>
+       <h5>
+          <%= link_to(user_followers_path(user.id)) do %><%= user.followers.count %><span class="text-muted">follower</span><% end %>
+          <%= link_to(user_followings_path(user.id)) do %><%= user.followings.count %><span class="text-muted">following</span><% end %>
+       </h5>
       </div>
       <div class="col-md-4 offset-md-4">
         <%= render 'public/relationships/relationshipbtn', user: user %>
