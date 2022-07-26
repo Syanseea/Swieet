@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.delete
+    if @user.destroy
       redirect_to admin_users_path
     else render 'index'
     end
