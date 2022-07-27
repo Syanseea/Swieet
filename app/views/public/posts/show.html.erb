@@ -83,6 +83,7 @@
                 <span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(@post.created_at) %>前</span>
               </div>
               <div class="content-text">
+                <%#リンクを投稿したときに、リンクをつけれるようにする%>
                 Content：<br><%= Rinku.auto_link(@post.content, :all, 'target="_blank"').html_safe %>
               </div>
             </div>

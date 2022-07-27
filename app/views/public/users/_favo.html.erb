@@ -3,7 +3,7 @@
   <% posts.each do |post| %>
     <div class="container mt-4" style="width: 80%;">
       <div class="row font-default">
-        
+
         <div class="col-md-3">
           <%#プロフィール画像 %>
           <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
@@ -30,7 +30,7 @@
             <% end %>
           <% end %>
           </div>
-          
+
           <div class="row text-center">
             <%#いいね機能 %>
             <div class="col-md-4 offset-md-2" id="favorite_buttons_<%= post.id %>">
@@ -46,7 +46,7 @@
           <div class="text-center text-muted">
             <%= l post.created_at %>
           </div>
-          
+
         </div>
         <%= link_to (post_path(post.id)) do %>
         <div class="col-md-9">
@@ -56,6 +56,7 @@
             <span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post.created_at) %>前</span>
           </div>
           <div class="content-text">
+            <%#リンクを投稿したときに、リンクをつけれるようにする%>
             Content：<br><%= Rinku.auto_link(post.content, :all, 'target="_blank"').html_safe %>
           </div>
         </div>
