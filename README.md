@@ -14,7 +14,11 @@
 水泳仲間に向けた「今日何時から何時まで練習してます」や「このメニュー、今日一緒にやりませんか」といった情報共有の投稿を行うことができる。ネット上でメニューを作成・共有することができるため、仲間同士での練習メニューの共有・水泳のコーチからのメニューの伝達ができる。メニューの画面にプリント機能があるため、プールに紙媒体でメニューを持ち込むことができる。また、メニュー作成者と違う時間帯や場所で練習を行う際も、サイトからメニューをプリントし同じメニューを行うことができる。
 
 ## 設計書
-<...>
+ER図：https://drive.google.com/file/d/1ci9l42b_0ZUvOEpIrRmdd2UqEqVgPAN3/view?usp=sharing
+テーブル定義書：https://docs.google.com/spreadsheets/d/1FN8AMSahfBkAO0sJkLMX4HR8zD3Rb-A3immpii4ROYA/edit?usp=sharing
+ワイヤーフレーム：https://drive.google.com/file/d/1cVHPHzy5apyvkzXMCnbA2tCnEPl7nxIR/view?usp=sharing
+画面遷移図：https://drive.google.com/file/d/1MMuDi4GyIau8QdS3fAgwbNw-bWSH2kSS/view?usp=sharing
+テスト仕様書：https://docs.google.com/spreadsheets/d/14UmbsrL5saVF0ejKO2YCAlLJ0IUl1N8pXdcLe0Olte4/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -24,4 +28,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です
+- 商用利用可能かつ、記載を行わなくて良いものを探し、利用いたしました。
