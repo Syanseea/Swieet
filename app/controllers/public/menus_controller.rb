@@ -14,6 +14,7 @@ class Public::MenusController < ApplicationController
     if @menu.save
       redirect_to menu_path(@menu)
     else
+      @post1 = Post.new
       render 'new'
     end
   end
@@ -40,6 +41,7 @@ class Public::MenusController < ApplicationController
     if @menu.update(menu_params)
       redirect_to menu_path(@menu)
     else
+      @post1 = Post.new
       render 'edit'
     end
 
