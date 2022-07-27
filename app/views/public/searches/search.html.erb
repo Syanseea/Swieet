@@ -1,8 +1,8 @@
 <div class="container-fluid px-sm-0 font-default">
     <div class="row">
-      <% #サイドバー %>
+      <%#サイドバー %>
       <div class="col-md-3 px-5 sidebar-bg">
-         <% #サイドバー %>
+         
 
         <%= render 'public/posts/form', post: @post1 %>
 
@@ -21,6 +21,7 @@
           <input id="search_posts" type="radio" name="tab_item">
           <label class="tab_item" for="search_posts">Swieets</label>
           <div class="tab_content" id="search_users_index">
+            <%#ユーザーの検索結果%>
             <div class="rab_content_description">
               <div>
               <% if @users.count == 0 %>
@@ -33,7 +34,7 @@
                 <div class="container border-bottom border-dark">
                   <div class="row mb-2 mt-2">
                     <div class="col-md-2">
-                    <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                    <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
                       <% if current_user == user %>
                         <%= link_to(mypage_path) do %>
                         <%= image_tag user.get_profile_image(80,80), class:"rounded-circle" %>
@@ -45,7 +46,7 @@
                       <% end %>
                     </div>
                     <div class="col-md-6 offset-md-1">
-                      <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                      <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
                       <% if current_user == user %>
                         <%= link_to(mypage_path) do %>
                           <b>Name:</b><%= user.name %><br>
@@ -72,6 +73,7 @@
               <%= paginate @users %>
             </div>
           </div>
+          <%#投稿の検索結果%>
           <div class="tab_content" id="search_posts_index">
             <div class="rab_content_description">
               <div class="ml-3">

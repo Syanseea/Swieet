@@ -1,8 +1,8 @@
 <div class="container-fluid px-sm-0 font-default">
   <div class="row">
-      <% #サイドバー %>
+      <%#サイドバー %>
     <div class="col-md-3 px-5 sidebar-bg">
-         <% #サイドバー %>
+         <%#サイドバー %>
       <%= render 'public/posts/form', post: @post1 %>
     </div>
 
@@ -33,7 +33,7 @@
         <div class="row mb-4 rounded-lg border border-dark">
           <div class="container">
 
-            <% #menu詳細上の部分 %>
+            <%#menu詳細上の部分 %>
           　<div class="row mx-1 border-bottom border-dark">
           　   <div class="col-md-3 mb-2 d-flex align-items-end">
                 <u><h4>日付：<%= @menu.dating %></h4></u>
@@ -89,10 +89,12 @@
           </div>
         </div>
       </div>
+      <!-- jqueryを用いて印刷ボタンを作る　範囲選択部分のみ|-->   
       <div class="row mb-4">
         <div class="col-md-4 text-center">
           <button class="print-btn btn-lg btn-success">印刷する<i class="fa-solid fa-print"></i></button>
         </div>
+      <!-- jqueryを用いてURLコピーボタンの |-->   
         <div class="col-md-4 text-center" id="copy-element">
           <button class="copy-btn btn-lg btn-success">urlをコピーする<i class="fa-solid fa-copy"></i></button>
         </div>

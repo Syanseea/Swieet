@@ -1,17 +1,17 @@
 <div class="container-fluid px-sm-0">
     <div class="row">
-      <% #サイドバー %>
+      <%#サイドバー %>
       <div class="col-md-3 px-5 sidebar-bg">
-         <% #サイドバー %>
+         <%#サイドバー %>
 
         <%= render 'public/posts/form', post: @post1 %>
 
       </div>
 
       <div class="col-md-9 px-5 sns-bg">
-      <% #myprofofile%>
+      <%#myprofofile%>
       <%= render 'public/users/myprofile', user: @user %>
-      <% #Swieet %>
+      <%#Swieet %>
       <%= render 'public/users/swieet', posts: @posts %>
     </div>
   </div>

@@ -1,8 +1,8 @@
 <div class="container-fluid px-sm-0">
   <div class="row">
-      <% #サイドバー %>
+      <%#サイドバー %>
       <div class="col-md-3 px-5 sidebar-bg">
-         <% #サイドバー %>
+         <%#サイドバー %>
 
         <%= render 'public/posts/form', post: @post1 %>
 
@@ -20,9 +20,9 @@
         <div class="container mt-4" style="width: 80%;">
 
           <div class="row font-default">
-            <% #プロフィール画像 %>
+            <%#プロフィール画像 %>
             <div class="col-md-3">
-              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
               <div class="text-center">
               <% if current_user == @post.user %>
                 <%= link_to(mypage_path) do %>
@@ -35,7 +35,7 @@
               <% end %>
               </div>
               <div class="mt-2 text-center">
-                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
                 <% if current_user == @post.user %>
                   <%= link_to(mypage_path) do %>
                     <h4><%= @post.user.name %></h4>
@@ -47,20 +47,20 @@
                 <% end %>
               </div>
               <div class="row text-center">
-                <% #いいね機能 %>
+                <%#いいね機能 %>
                 <div class="col-md-4 offset-md-2" id="favorite_buttons_<%= @post.id %>">
                 <%= render 'public/posts/favorite', post: @post %>
                 </div>
-                <% #コメント数 %>
+                <%#コメント数 %>
                 <div class="col-md-6">
                   <i class="fa-solid fa-comment"></i> <%= @post.post_comments.count %>
                 </div>
               </div>
-
+              <%#投稿時間 %>
               <div class="text-center text-muted">
                 <%= l @post.created_at %>
               </div>
-
+              <%#コンテンツ %>
               <% if current_user == @post.user %>
               <div class="row mt-1">
                 <div class="col-md-6 text-center">
@@ -91,15 +91,15 @@
         </div>
       </div>
 
-      <% #コメント機能 %>
+      <%#コメント機能 %>
       <div class="row">
         <% @post.post_comments.each do |post_comment| %>
         <div class="container mt-4" style="width: 80%;">
           <div class="row font-default">
 
-            <% #プロフィール画像 %>
+            <%#プロフィール画像 %>
             <div class="col-md-3">
-              <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+              <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
               <div class="text-center">
               <% if current_user == post_comment.user %>
                 <%= link_to(mypage_path) do %>
@@ -112,7 +112,7 @@
               <% end %>
               </div>
               <div class="mt-2 text-center">
-                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
                 <% if current_user == post_comment.user %>
                   <%= link_to(mypage_path) do %>
                     <h5><%= post_comment.user.name %></h5>
@@ -124,7 +124,7 @@
                 <% end %>
               </div>
               <div class="text-center">
-                <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+                <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
                 <% if current_user == post_comment.post.user %>
                   <%= link_to(mypage_path) do %>
                     For:<%= post_comment.post.user.name %><br>
@@ -146,7 +146,7 @@
                 </div>
               <% end %>
             </div>
-            <% #comment content %>
+            <%#comment content %>
             <div class="col-md-9">
             <div class="swieet-comment-content">
               <div><span class="float-right text-muted"><i class="far fa-clock clock-icon"></i><%= time_ago_in_words(post_comment.created_at) %>前</span></div>
@@ -160,7 +160,7 @@
         <% end %>
       </div>
 
-      <% #コメント送信機能 %>
+      <%#コメント送信機能 %>
       <div class="row font-default mb-4">
         <div class="container mt-2 post-form rounded-lg" style="width:60%;">
           <%= render 'layouts/error_messages', object: @post_comment %>

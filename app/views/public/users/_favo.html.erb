@@ -1,11 +1,12 @@
+<%#いいね一覧の部分テンプレート%>
 <div class="row mb-4">
   <% posts.each do |post| %>
     <div class="container mt-4" style="width: 80%;">
       <div class="row font-default">
         
         <div class="col-md-3">
-          <% #プロフィール画像 %>
-          <% #カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
+          <%#プロフィール画像 %>
+          <%#カレントユーザーなら、マイページ それ以外ならユーザー詳細ページ%>
           <div class="text-center">
             <% if current_user == post.user %>
               <%= link_to(mypage_path) do %>
