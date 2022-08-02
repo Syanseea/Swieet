@@ -31,7 +31,7 @@ class Public::MenusController < ApplicationController
 
   def destroy
     @menu = Menu.find(params[:id])
-    @menu.delete
+    @menu.destro
     redirect_to request.referer
   end
 

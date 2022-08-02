@@ -6,7 +6,7 @@ class Admin::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.delete
+    if @post.destroy
       redirect_to admin_posts_path
     else render 'index'
     end
