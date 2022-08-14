@@ -32,19 +32,19 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit:[width, height]).processed
   end
-
+#フォロー機能
   def follow(user)
     relationships.create(followed_id: user.id)
   end
-
+#フォロー機能
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
   end
-
+#フォローしているかどうか判断
   def following?(user)
     followings.include?(user)
   end
-
+#検索機能
   def self.looks(word)
     unless word == ""
       @user = User.where("name LIKE?","%#{word}%")
