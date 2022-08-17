@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image, dependent: :destroy
 
   validates :name, presence: true
-
+#ゲスト機能
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def get_profile_image(width, height)
-
+#画像搭載機能
     unless profile_image.attached?
       file_path =Rails.root.join('app/assets/images/swieetnoimage.png')
       profile_image.attach(io:File.open(file_path), filename:'default-image.jpg', content_type:'image/jpeg')
