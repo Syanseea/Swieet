@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :menus, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  #中間テーブルを作成した
   has_many :relationships, class_name:"Relationship", foreign_key:"follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name:"Relationship", foreign_key:"followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
