@@ -20,6 +20,7 @@ class User < ApplicationRecord
 #ゲスト機能
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      #これでランダムな配列を作成することができる
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
