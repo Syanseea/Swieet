@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   end
 
   def self.looks(word)
+    #空白ならば全部載せるそれ以外は、部分検索
     unless word == ""
       @post = Post.where(["title LIKE? OR content LIKE?","%#{word}%","%#{word}%"])
     else
