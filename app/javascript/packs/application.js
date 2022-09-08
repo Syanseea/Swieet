@@ -26,6 +26,7 @@ const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 
 // copy-btn
+//本番環境ではクリップボードというワードが使えなかった
 $(document).ready(function(){
    $(".copy-btn").click(function() {
   var url = $(location).attr('href');
