@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  
+  ##ページを１０個の情報で区切れるようにした
   def index
     @users = User.page(params[:page]).per(10)
   end
