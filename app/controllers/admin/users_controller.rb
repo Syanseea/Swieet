@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   def index
     @users = User.page(params[:page]).per(10)
   end
-
+##destroyに注意
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
