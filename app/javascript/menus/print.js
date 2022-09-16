@@ -1,3 +1,4 @@
+//一度画面を消してから、再表示
 $(document).ready(function(){
    $(".print-btn").click(function() {
 
