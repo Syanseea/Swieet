@@ -1,5 +1,6 @@
 //一度画面を消してから、再表示
 $(document).ready(function(){
+    //ここでプリントボタンというのを発火させる
    $(".print-btn").click(function() {
 
      var printArea = $(".print-area");
