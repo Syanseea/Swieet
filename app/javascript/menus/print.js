@@ -2,7 +2,7 @@
 $(document).ready(function(){
     //ここでプリントボタンというのを発火させる
    $(".print-btn").click(function() {
-
+//printエリアの選択
      var printArea = $(".print-area");
 
      $('body').append('<div id="print" class="printBc"></div>');
